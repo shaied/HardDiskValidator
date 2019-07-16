@@ -34,6 +34,8 @@ namespace HardDiskValidator
             this.comboDisks = new System.Windows.Forms.ComboBox();
             this.chkRead = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblStrtSect = new System.Windows.Forms.Label();
+            this.txtStrtSect = new System.Windows.Forms.TextBox();
             this.chkWriteVerify = new System.Windows.Forms.RadioButton();
             this.chkReadWriteVerifyRestore = new System.Windows.Forms.RadioButton();
             this.chkReadRewriteVerify = new System.Windows.Forms.RadioButton();
@@ -62,7 +64,7 @@ namespace HardDiskValidator
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(370, 159);
+            this.btnStart.Location = new System.Drawing.Point(370, 177);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 6;
@@ -95,16 +97,34 @@ namespace HardDiskValidator
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblStrtSect);
+            this.groupBox1.Controls.Add(this.txtStrtSect);
             this.groupBox1.Controls.Add(this.chkWriteVerify);
             this.groupBox1.Controls.Add(this.chkReadWriteVerifyRestore);
             this.groupBox1.Controls.Add(this.chkReadRewriteVerify);
             this.groupBox1.Controls.Add(this.chkRead);
             this.groupBox1.Location = new System.Drawing.Point(370, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 122);
+            this.groupBox1.Size = new System.Drawing.Size(185, 141);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Test:";
+            // 
+            // lblStrtSect
+            // 
+            this.lblStrtSect.AutoSize = true;
+            this.lblStrtSect.Location = new System.Drawing.Point(6, 116);
+            this.lblStrtSect.Name = "lblStrtSect";
+            this.lblStrtSect.Size = new System.Drawing.Size(66, 13);
+            this.lblStrtSect.TabIndex = 9;
+            this.lblStrtSect.Text = "Start Sector:";
+            // 
+            // txtStrtSect
+            // 
+            this.txtStrtSect.Location = new System.Drawing.Point(78, 113);
+            this.txtStrtSect.Name = "txtStrtSect";
+            this.txtStrtSect.Size = new System.Drawing.Size(100, 20);
+            this.txtStrtSect.TabIndex = 8;
             // 
             // chkWriteVerify
             // 
@@ -150,7 +170,7 @@ namespace HardDiskValidator
             // 
             // btnCopyLog
             // 
-            this.btnCopyLog.Location = new System.Drawing.Point(488, 158);
+            this.btnCopyLog.Location = new System.Drawing.Point(488, 176);
             this.btnCopyLog.Name = "btnCopyLog";
             this.btnCopyLog.Size = new System.Drawing.Size(67, 24);
             this.btnCopyLog.TabIndex = 10;
@@ -180,7 +200,7 @@ namespace HardDiskValidator
             // 
             this.groupProgress.Controls.Add(this.lblSpeed);
             this.groupProgress.Controls.Add(this.lblPosition);
-            this.groupProgress.Location = new System.Drawing.Point(370, 183);
+            this.groupProgress.Location = new System.Drawing.Point(370, 201);
             this.groupProgress.Name = "groupProgress";
             this.groupProgress.Size = new System.Drawing.Size(185, 64);
             this.groupProgress.TabIndex = 9;
@@ -198,7 +218,7 @@ namespace HardDiskValidator
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictureBoxLegend);
-            this.groupBox2.Location = new System.Drawing.Point(370, 251);
+            this.groupBox2.Location = new System.Drawing.Point(370, 269);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(184, 86);
             this.groupBox2.TabIndex = 11;
@@ -209,7 +229,8 @@ namespace HardDiskValidator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 353);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(564, 361);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCopyLog);
             this.Controls.Add(this.groupProgress);
@@ -221,15 +242,15 @@ namespace HardDiskValidator
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(570, 380);
-            this.MinimumSize = new System.Drawing.Size(570, 380);
+            this.MaximumSize = new System.Drawing.Size(580, 400);
+            this.MinimumSize = new System.Drawing.Size(580, 400);
             this.Name = "MainForm";
             this.Text = "Hard Disk Validator";
             this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -259,6 +280,8 @@ namespace HardDiskValidator
         private System.Windows.Forms.PictureBox pictureBoxLegend;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton chkWriteVerify;
+        private System.Windows.Forms.Label lblStrtSect;
+        public System.Windows.Forms.TextBox txtStrtSect;
     }
 }
 

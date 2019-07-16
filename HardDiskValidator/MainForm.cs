@@ -180,6 +180,8 @@ namespace HardDiskValidator
                             chkReadRewriteVerify.Enabled = true;
                             chkReadWriteVerifyRestore.Enabled = true;
                             chkWriteVerify.Enabled = true;
+                            txtStrtSect.Enabled = true;
+                            lblStrtSect.Enabled = true;
                         });
                     }
                 });
@@ -230,6 +232,8 @@ namespace HardDiskValidator
                 chkReadRewriteVerify.Enabled = false;
                 chkReadWriteVerifyRestore.Enabled = false;
                 chkWriteVerify.Enabled = false;
+                txtStrtSect.Enabled = false;
+                lblStrtSect.Enabled = false;
                 Thread thread = new Thread(delegate()
                 {
                     m_isBusy = true;
@@ -252,6 +256,8 @@ namespace HardDiskValidator
                             chkReadRewriteVerify.Enabled = true;
                             chkReadWriteVerifyRestore.Enabled = true;
                             chkWriteVerify.Enabled = true;
+                            txtStrtSect.Enabled = true;
+                            lblStrtSect.Enabled = true;
                         });
                     }
                 });
@@ -306,7 +312,23 @@ namespace HardDiskValidator
                 pictureBoxMap.Invalidate();
                 pictureBoxMap.Update();
             });
-            for (int uiBlockIndex = 0; uiBlockIndex < m_blocks.Length; uiBlockIndex++)
+            long startSect;
+            if (!string.IsNullOrEmpty(txtStrtSect.Text))
+            {
+                bool validStrtSect = long.TryParse(txtStrtSect.Text, out startSect);
+                if (!validStrtSect)
+                {
+                    MessageBox.Show("Start Sector is invalid");
+                    return;
+                }
+                if (validStrtSect & startSect > disk.TotalSectors)
+                {
+                    MessageBox.Show("Start Sector is out of bounds");
+                    return;
+                }
+            }
+            else startSect = 0;
+            for (long uiBlockIndex = startSect / uiBlockSize; uiBlockIndex < m_blocks.Length; uiBlockIndex++)
             {
                 long sectorIndex = uiBlockIndex * uiBlockSize;
                 long sectorCount = uiBlockSize;
